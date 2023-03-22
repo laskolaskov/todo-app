@@ -7,7 +7,7 @@ export type Entry = {
     date: number
 }
 
-let items: Entry[] = JSON.parse(localStorage.getItem(storageKey))
+let items: Entry[] = JSON.parse(localStorage.getItem(storageKey)) ?? []
 
 export const todos = writable(items)
 
