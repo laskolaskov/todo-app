@@ -11,7 +11,7 @@
         $todos.push({
             text: val,
             marked: false,
-            date: Date.now()
+            date: Date.now(),
         });
         $todos.sort(sorter);
         //assignment triggers Svelte reactivity
@@ -27,22 +27,22 @@
 
 <form on:submit|preventDefault={() => submitHandler()}>
     <button type="submit" class="text-xl p-2 font-bold">Add new todo:</button>
-    <button
-        on:click={() => showModal = true}
-        class="float-right ml-2 text-xl p-2 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
-        >CLEAR LIST</button
-    >
-    <button
-        on:click={() => clearMarked()}
-        class="float-right text-xl p-2 border-2 border-green-500 rounded-md text-white bold bg-green-400 hover:bg-green-300"
-        >CLEAR MARKED</button
-    >
     <input
         bind:value={val}
         name="new"
         class="mt-4 block w-full border-4 border-slate-600 rounded-md text-xl h-12 bg-slate-100 p-2"
         type="text"
     />
+    <button
+        on:click={() => clearMarked()}
+        class="mr-2 mt-2 text-xl p-2 border-2 border-green-500 rounded-md text-white bold bg-green-400 hover:bg-green-300"
+        >CLEAR MARKED</button
+    >
+    <button
+        on:click={() => (showModal = true)}
+        class="text-xl p-2 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
+        >CLEAR LIST</button
+    >
 </form>
 
 <ClearListModal bind:showModal />
