@@ -4,7 +4,7 @@
     import { todos } from "./lib/stores";
 </script>
 
-<main class="sm:w-1/2 sm:mx-auto p-2">
+<main class="lg:w-1/2 lg:mx-auto p-2">
     <Form />
     {#if $todos.length}
         {#each $todos as todo}
