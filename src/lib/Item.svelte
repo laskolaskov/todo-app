@@ -53,6 +53,7 @@
         <input
             bind:this={input}
             on:change={() => saveContentHandler()}
+            on:focusout={() => saveContentHandler()}
             class="w-full p-2 text-xl border-2 rounded-md bg-white hover:bg-gray-100"
             type="text"
             bind:value={todo.text}
