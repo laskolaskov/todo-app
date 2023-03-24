@@ -3,23 +3,22 @@
     "name": "Todo list app",
     "icons": [
       {
-        "src": "./todo-app-512.png",
+        "src": "todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       },
       {
-        "src": "./todo-app-192.png",
+        "src": "todo-app-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "./todo-app-512.png",
+        "src": "todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "id": "/?source=pwa",
-    "start_url": "/?source=pwa",
+    "start_url": "/",
     "background_color": "#e0f2fe",
     "display": "standalone",
     "scope": "/",
