@@ -1,0 +1,28 @@
+{
+    "short_name": "Todo list",
+    "name": "Todo list app",
+    "icons": [
+      {
+        "src": "/todo-app-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },
+      {
+        "src": "/todo-app-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/todo-app-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "id": "/?source=pwa",
+    "start_url": "/?source=pwa",
+    "background_color": "#e0f2fe",
+    "display": "fullscreen",
+    "scope": "/",
+    "theme_color": "#e0f2fe",
+    "description": "Simple todo list application by Lasko Laskov."
+  }

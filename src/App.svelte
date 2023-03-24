@@ -2,6 +2,12 @@
     import Form from "./lib/Form.svelte";
     import Item from "./lib/Item.svelte";
     import { todos } from "./lib/stores";
+
+    window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    });
 </script>
 
 <main class="lg:w-1/2 lg:mx-auto p-2">
