@@ -3,25 +3,23 @@
     "name": "Todo list app",
     "icons": [
       {
-        "src": "todo-app-512.png",
+        "src": "public/todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       },
       {
-        "src": "todo-app-192.png",
+        "src": "public/todo-app-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "todo-app-512.png",
+        "src": "public/todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "/index.html",
     "background_color": "#e0f2fe",
     "display": "standalone",
-    "scope": "/",
     "theme_color": "#e0f2fe",
     "description": "Simple todo list application by Lasko Laskov."
   }
