@@ -21,7 +21,7 @@
     "id": "/?source=pwa",
     "start_url": "/?source=pwa",
     "background_color": "#e0f2fe",
-    "display": "fullscreen",
+    "display": "standalone",
     "scope": "/",
     "theme_color": "#e0f2fe",
     "description": "Simple todo list application by Lasko Laskov."
