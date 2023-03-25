@@ -7,11 +7,12 @@ export type Entry = {
     date: number
 }
 
+export const initData = new Map([["main", []]])
 const fromStorage = localStorage.getItem(storageKey)
-let data: Map<string, Entry[]> = checkStorage(fromStorage) ? new Map(JSON.parse(fromStorage)) : new Map([["main", []]])
+let data: Map<string, Entry[]> = checkStorage(fromStorage) ? new Map(JSON.parse(fromStorage)) : initData
 
 export const todos = writable(data)
-export const currentList = writable("main")
+export const currentList = writable([...data.keys()][0] ?? '')
 
 todos.subscribe((v) => localStorage.setItem(storageKey, JSON.stringify(Array.from(v.entries()))))
 

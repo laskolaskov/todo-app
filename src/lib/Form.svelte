@@ -1,11 +1,17 @@
 <script lang="ts">
     import { sorter, todos, currentList } from "../lib/stores";
     import ClearListModal from "./ClearListModal.svelte";
+    import DeleteAllModal from "./DeleteAllModal.svelte";
+    import DeleteListModal from "./DeleteListModal.svelte";
+    import NewListModal from "./NewListModal.svelte";
 
     let val: string;
-    let showModal = false;
+    let showClearListModal = false;
+    let showCreateListModal = false;
+    let showDeleteListModal = false;
+    let showDeleteAllModal = false;
 
-    $: lists = $todos.keys()
+    $: lists = $todos.keys();
 
     function submitHandler() {
         if (!val) {
@@ -24,36 +30,47 @@
     }
 
     function clearMarked() {
-        $todos.set($currentList, $todos.get($currentList).filter((item) => !item.marked));
-        $todos = $todos
+        $todos.set(
+            $currentList,
+            $todos.get($currentList).filter((item) => !item.marked)
+        );
+        $todos = $todos;
     }
 </script>
 
-<form on:submit|preventDefault={() => submitHandler()}>
-    <select
-        class="text-md p-1 border-2 border-blue-500 rounded-md text-black bold hover:bg-gray-10 w-full"
-        bind:value={$currentList}
-        on:change={() => console.log("select change")}
+<select
+    class="text-md p-1 border-2 border-blue-500 rounded-md text-black bold hover:bg-gray-10 w-full"
+    bind:value={$currentList}
+    on:change={() => console.log("select change")}
+>
+    {#each [...lists] as list}
+        <option value={list}>
+            {list}
+        </option>
+    {/each}
+</select>
+<div class="my-2">
+    <button
+        on:click={() => (showCreateListModal = true)}
+        class="text-md p-1 mr-2 border-2 border-blue-500 rounded-md text-white bold bg-blue-400 hover:bg-blue-300"
+        >CREATE NEW LIST</button
     >
-        {#each [...lists] as list}
-            <option value={list}>
-                {list}
-            </option>
-        {/each}
-    </select>
-    <div class="my-2">
-        <button
-            on:click={() => console.log('create new list')}
-            class="text-md p-1 mr-2 border-2 border-blue-500 rounded-md text-white bold bg-blue-400 hover:bg-blue-300"
-            >CREATE NEW LIST</button
-        >
-        <button
-            on:click={() => console.log('delete list')}
-            class="text-md p-1 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
-            >DELETE LIST</button
-        >
-    </div>
-    <button type="submit" class="text-xl mt-2 p-1 font-bold">Add new todo:</button>
+    <button
+        on:click={() => showDeleteListModal = true}
+        class="text-md p-1 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
+        >DELETE LIST</button
+    >
+    <button
+        on:click={() => showDeleteAllModal = true}
+        class="text-md p-1 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
+        >DELETE ALL</button
+    >
+</div>
+
+<form on:submit|preventDefault={() => submitHandler()}>
+    <button type="submit" class="text-xl mt-2 p-1 font-bold"
+        >Add new todo:</button
+    >
     <input
         bind:value={val}
         name="new"
@@ -66,13 +83,16 @@
         >CLEAR MARKED</button
     >
     <button
-        on:click={() => (showModal = true)}
+        on:click={() => (showClearListModal = true)}
         class="text-xl p-2 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
         >CLEAR LIST</button
     >
 </form>
 
-<ClearListModal bind:showModal />
+<ClearListModal bind:showClearListModal />
+<NewListModal bind:showCreateListModal />
+<DeleteListModal bind:showDeleteListModal />
+<DeleteAllModal bind:showDeleteAllModal />
 
 <style>
 </style>
