@@ -1,6 +1,7 @@
 import { writable } from "svelte/store"
 
 const storageKey = 'lasko-laskov-todo-app'
+const currentListKey = 'lasko-laskov-todo-app-current-list'
 export type Entry = {
     text: string
     marked: boolean,
@@ -8,13 +9,16 @@ export type Entry = {
 }
 
 export const initData = new Map([["main", []]])
+
 const fromStorage = localStorage.getItem(storageKey)
 let data: Map<string, Entry[]> = checkStorage(fromStorage) ? new Map(JSON.parse(fromStorage)) : initData
-
 export const todos = writable(data)
-export const currentList = writable([...data.keys()][0] ?? '')
+
+const currentFromStorage = localStorage.getItem(currentListKey)
+export const currentList = writable(data.has(currentFromStorage) ? currentFromStorage : [...data.keys()][0])
 
 todos.subscribe((v) => localStorage.setItem(storageKey, JSON.stringify(Array.from(v.entries()))))
+currentList.subscribe((v) => localStorage.setItem(currentListKey, v))
 
 function checkStorage(data: string) {
     if(null === data) {

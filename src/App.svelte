@@ -1,6 +1,7 @@
 <script lang="ts">
     import Form from "./lib/Form.svelte";
     import Item from "./lib/Item.svelte";
+    import Lists from "./lib/Lists.svelte";
     import { todos, currentList } from "./lib/stores";
 
     $: list = $todos.get($currentList)
@@ -13,6 +14,7 @@
 </script>
 
 <main class="lg:w-1/2 lg:mx-auto p-2">
+    <Lists />
     <Form />
     {#if list && list.length}
         {#each list as todo}

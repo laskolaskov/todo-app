@@ -11,6 +11,10 @@
         if(!listName.trim().length) {
             return
         }
+        if($todos.has(listName)) {
+            listName = ""
+            return
+        }
         $todos.set(listName, [])
         $todos = $todos
         $currentList = listName
@@ -29,7 +33,7 @@
         on:submit|preventDefault={() => console.log(listName)}
         on:keypress|self={() => null}
     >
-        <p class="text-center text-black bold text-3xl mb-5">Enter name:</p>
+        <p class="text-center text-black bold text-3xl mb-5">Enter list name:</p>
         <input
             bind:value={listName}
             name="new"
