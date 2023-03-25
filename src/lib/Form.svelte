@@ -4,6 +4,14 @@
 
     let val: string;
     let showModal = false;
+
+    let lists = [
+        `main`,
+        `list with kinda really long massive and huge name`,
+        `another list`,
+    ];
+    let currentList;
+
     function submitHandler() {
         if (!val) {
             return;
@@ -26,11 +34,34 @@
 </script>
 
 <form on:submit|preventDefault={() => submitHandler()}>
-    <button type="submit" class="text-xl p-2 font-bold">Add new todo:</button>
+    <select
+        class="text-md p-1 border-2 border-blue-500 rounded-md text-black bold hover:bg-gray-10 w-full"
+        bind:value={currentList}
+        on:change={() => console.log("select change")}
+    >
+        {#each lists as list}
+            <option value={list}>
+                {list}
+            </option>
+        {/each}
+    </select>
+    <div class="my-2">
+        <button
+            on:click={() => console.log('create new list')}
+            class="text-md p-1 mr-2 border-2 border-blue-500 rounded-md text-white bold bg-blue-400 hover:bg-blue-300"
+            >CREATE NEW LIST</button
+        >
+        <button
+            on:click={() => console.log('delete list')}
+            class="text-md p-1 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
+            >DELETE LIST</button
+        >
+    </div>
+    <button type="submit" class="text-xl mt-2 p-1 font-bold">Add new todo:</button>
     <input
         bind:value={val}
         name="new"
-        class="mt-4 block w-full border-4 border-slate-600 rounded-md text-xl h-12 bg-slate-100 p-2"
+        class="mt-2 block w-full border-4 border-slate-600 rounded-md text-xl h-12 bg-slate-100 p-2"
         type="text"
     />
     <button
