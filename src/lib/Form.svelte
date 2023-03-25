@@ -6,11 +6,11 @@
     let showClearListModal = false;
 
     function submitHandler() {
-        if (!val) {
+        if (!val || !val.length) {
             return;
         }
         $todos.get($currentList).push({
-            text: val,
+            text: val.trim(),
             marked: false,
             date: Date.now(),
         });

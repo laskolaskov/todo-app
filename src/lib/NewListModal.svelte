@@ -3,23 +3,26 @@
 
     export let showCreateListModal: boolean;
     export let unclosable: boolean;
-    let listName: string;
+    let listName: string
     let dialog: HTMLDialogElement;
 
     $: if (dialog && showCreateListModal) dialog.showModal();
 
     function createList() {
-        if (!listName.trim().length) {
-            return;
+        if(!listName || !listName.length) {
+            return
         }
+        listName = listName.trim()
         if ($todos.has(listName)) {
             listName = "";
+            dialog.close();
             return;
         }
         $todos.set(listName, []);
         $todos = $todos;
         $currentList = listName;
         listName = "";
+        dialog.close();
     }
 </script>
 
@@ -31,7 +34,9 @@
     on:keypress|self={() => null}
 >
     <form
-        on:submit|preventDefault={() => console.log(listName)}
+        on:submit|preventDefault={() => {
+            createList();
+        }}
         on:keypress|self={() => null}
     >
         <p class="text-center text-black bold text-3xl mb-5">
@@ -47,11 +52,7 @@
             <button
                 type="submit"
                 class="border-2 rounded-md border-green-500 bg-green-400 text-white bold p-2 hover:bg-green-300"
-                on:click={() => {
-                    createList();
-                    dialog.close();
-                }}
-                on:keypress={() => null}>CREATE</button
+                >CREATE</button
             >
             {#if !unclosable}
                 <button

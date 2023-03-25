@@ -7,6 +7,7 @@
     function deleteList() {
         $todos.delete($currentList);
         $todos = $todos;
+        $currentList = Array.from($todos.keys())[0]
     }
 
     $: if (dialog && showDeleteListModal) dialog.showModal();

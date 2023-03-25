@@ -13,7 +13,7 @@ let data: Map<string, Entry[]> = checkStorage(fromStorage) ? new Map(JSON.parse(
 export const todos = writable(data)
 
 const currentFromStorage = localStorage.getItem(currentListKey)
-export const currentList = writable(data.has(currentFromStorage) ? currentFromStorage : [...data.keys()][0])
+export const currentList = writable(data.has(currentFromStorage) ? currentFromStorage : Array.from(data.keys())[0])
 
 todos.subscribe((v) => localStorage.setItem(storageKey, JSON.stringify(Array.from(v.entries()))))
 currentList.subscribe((v) => localStorage.setItem(currentListKey, v))

@@ -14,7 +14,6 @@
 <select
     class="text-md p-1 border-2 border-blue-500 rounded-md text-black bold hover:bg-gray-10 w-full"
     bind:value={$currentList}
-    on:change={() => console.log("select change")}
 >
     {#each lists as list}
         <option value={list}>
