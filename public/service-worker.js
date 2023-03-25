@@ -21,6 +21,15 @@ const CACHE_NAME = "offline";
 // Customize this with a different URL if needed.
 const OFFLINE_URL = "./index.html";
 
+const staticAssets = [
+    "index.html",
+    "assets/index-68eb6abd.js",
+    'assets/index-c3ea5133.css',
+    'todo-app-192.png',
+    'todo-app-512.png',
+    'vite.svg',
+];
+
 self.addEventListener("install", (event) => {
     event.waitUntil(
         (async () => {
@@ -28,7 +37,8 @@ self.addEventListener("install", (event) => {
             // Setting {cache: 'reload'} in the new request ensures that the
             // response isn't fulfilled from the HTTP cache; i.e., it will be
             // from the network.
-            await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+            //await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+            await cache.addAll(staticAssets);
         })()
     );
     // Force the waiting service worker to become the active service worker.
