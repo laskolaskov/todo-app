@@ -1,7 +1,9 @@
 <script lang="ts">
     import Form from "./lib/Form.svelte";
     import Item from "./lib/Item.svelte";
-    import { todos } from "./lib/stores";
+    import { todos, currentList } from "./lib/stores";
+
+    $: list = $todos.get($currentList)
 
     window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {
@@ -12,8 +14,8 @@
 
 <main class="lg:w-1/2 lg:mx-auto p-2">
     <Form />
-    {#if $todos.length}
-        {#each $todos as todo}
+    {#if list && list.length}
+        {#each list as todo}
             <Item {todo} />
         {/each}
     {:else}

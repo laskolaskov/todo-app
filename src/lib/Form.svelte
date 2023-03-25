@@ -1,27 +1,22 @@
 <script lang="ts">
-    import { sorter, todos } from "../lib/stores";
+    import { sorter, todos, currentList } from "../lib/stores";
     import ClearListModal from "./ClearListModal.svelte";
 
     let val: string;
     let showModal = false;
 
-    let lists = [
-        `main`,
-        `list with kinda really long massive and huge name`,
-        `another list`,
-    ];
-    let currentList;
+    $: lists = $todos.keys()
 
     function submitHandler() {
         if (!val) {
             return;
         }
-        $todos.push({
+        $todos.get($currentList).push({
             text: val,
             marked: false,
             date: Date.now(),
         });
-        $todos.sort(sorter);
+        $todos.get($currentList).sort(sorter);
         //assignment triggers Svelte reactivity
         $todos = $todos;
         //clear input value
@@ -29,17 +24,18 @@
     }
 
     function clearMarked() {
-        $todos = $todos.filter((item) => !item.marked);
+        $todos.set($currentList, $todos.get($currentList).filter((item) => !item.marked));
+        $todos = $todos
     }
 </script>
 
 <form on:submit|preventDefault={() => submitHandler()}>
     <select
         class="text-md p-1 border-2 border-blue-500 rounded-md text-black bold hover:bg-gray-10 w-full"
-        bind:value={currentList}
+        bind:value={$currentList}
         on:change={() => console.log("select change")}
     >
-        {#each lists as list}
+        {#each [...lists] as list}
             <option value={list}>
                 {list}
             </option>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { sorter, todos, type Entry } from "./stores";
+    import { currentList, sorter, todos, type Entry } from "./stores";
     import dateFormat from "dateformat";
     import { tick } from "svelte";
 
@@ -11,7 +11,7 @@
 
     function clickHandler() {
         todo.marked = !todo.marked;
-        $todos.sort(sorter);
+        $todos.get($currentList).sort(sorter);
         $todos = $todos;
     }
 

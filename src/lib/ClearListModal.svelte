@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { todos } from "./stores";
+    import { currentList, todos } from "./stores";
 
     export let showModal: boolean;
     let dialog: HTMLDialogElement;
 
     function clearList() {
-        $todos = [];
+        $todos.set($currentList, []);
+        $todos = $todos
     }
 
     $: if (dialog && showModal) dialog.showModal();
