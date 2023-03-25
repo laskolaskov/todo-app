@@ -19,15 +19,16 @@ Copyright 2015, 2019, 2020, 2021 Google LLC. All Rights Reserved.
 const OFFLINE_VERSION = 1;
 const CACHE_NAME = "offline";
 // Customize this with a different URL if needed.
-const OFFLINE_URL = "./index.html";
+const OFFLINE_URL = "/";
 
 const staticAssets = [
-    "index.html",
-    "assets/index-68eb6abd.js",
-    'assets/index-c3ea5133.css',
-    'todo-app-192.png',
-    'todo-app-512.png',
-    'vite.svg',
+    "/index.html",
+    //"/assets/",
+    "/assets/index-68eb6abd.js",
+    "/assets/index-c3ea5133.css",
+    "/todo-app-192.png",
+    "/todo-app-512.png",
+    "/vite.svg",
 ];
 
 self.addEventListener("install", (event) => {
