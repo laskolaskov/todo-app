@@ -2,9 +2,11 @@
     import Form from "./lib/Form.svelte";
     import Item from "./lib/Item.svelte";
     import Lists from "./lib/Lists.svelte";
+    import NewListModal from "./lib/NewListModal.svelte";
     import { todos, currentList } from "./lib/stores";
 
-    $: list = $todos.get($currentList)
+    $: showCreateListModal = $todos.size === 0;
+    $: list = $todos.get($currentList);
 
     window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {
@@ -32,5 +34,4 @@
     </p>
 </main>
 
-<style>
-</style>
+<NewListModal bind:showCreateListModal unclosable={true} />

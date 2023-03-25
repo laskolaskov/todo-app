@@ -1,12 +1,11 @@
 <script lang="ts">
-    import { currentList, initData, todos } from "./stores";
+    import { currentList, todos } from "./stores";
 
     export let showDeleteAllModal: boolean;
     let dialog: HTMLDialogElement;
 
     function deleteAll() {
-        $todos = initData
-        $currentList = Array.from($todos.keys())[0]
+        $todos = new Map()
     }
 
     $: if (dialog && showDeleteAllModal) dialog.showModal();

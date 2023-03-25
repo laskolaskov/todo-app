@@ -2,23 +2,24 @@
     import { currentList, todos } from "./stores";
 
     export let showCreateListModal: boolean;
+    export let unclosable: boolean;
     let listName: string;
     let dialog: HTMLDialogElement;
 
     $: if (dialog && showCreateListModal) dialog.showModal();
 
     function createList() {
-        if(!listName.trim().length) {
-            return
+        if (!listName.trim().length) {
+            return;
         }
-        if($todos.has(listName)) {
-            listName = ""
-            return
+        if ($todos.has(listName)) {
+            listName = "";
+            return;
         }
-        $todos.set(listName, [])
-        $todos = $todos
-        $currentList = listName
-        listName = ""
+        $todos.set(listName, []);
+        $todos = $todos;
+        $currentList = listName;
+        listName = "";
     }
 </script>
 
@@ -33,7 +34,9 @@
         on:submit|preventDefault={() => console.log(listName)}
         on:keypress|self={() => null}
     >
-        <p class="text-center text-black bold text-3xl mb-5">Enter list name:</p>
+        <p class="text-center text-black bold text-3xl mb-5">
+            Enter list name:
+        </p>
         <input
             bind:value={listName}
             name="new"
@@ -45,17 +48,19 @@
                 type="submit"
                 class="border-2 rounded-md border-green-500 bg-green-400 text-white bold p-2 hover:bg-green-300"
                 on:click={() => {
-                    createList()
+                    createList();
                     dialog.close();
                 }}
                 on:keypress={() => null}>CREATE</button
             >
-            <button
-                type="reset"
-                class="border-2 rounded-md border-blue-500 bg-blue-400 text-white bold p-2 hover:bg-blue-300"
-                on:click={() => dialog.close()}
-                on:keypress={() => null}>CANCEL</button
-            >
+            {#if !unclosable}
+                <button
+                    type="reset"
+                    class="border-2 rounded-md border-blue-500 bg-blue-400 text-white bold p-2 hover:bg-blue-300"
+                    on:click={() => dialog.close()}
+                    on:keypress={() => null}>CANCEL</button
+                >
+            {/if}
         </div>
     </form>
 </dialog>

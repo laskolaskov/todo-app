@@ -40,6 +40,6 @@
     >
 </div>
 
-<NewListModal bind:showCreateListModal />
+<NewListModal bind:showCreateListModal unclosable={false} />
 <DeleteListModal bind:showDeleteListModal />
 <DeleteAllModal bind:showDeleteAllModal />

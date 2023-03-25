@@ -8,10 +8,8 @@ export type Entry = {
     date: number
 }
 
-export const initData = new Map([["main", []]])
-
 const fromStorage = localStorage.getItem(storageKey)
-let data: Map<string, Entry[]> = checkStorage(fromStorage) ? new Map(JSON.parse(fromStorage)) : initData
+let data: Map<string, Entry[]> = checkStorage(fromStorage) ? new Map(JSON.parse(fromStorage)) : new Map()
 export const todos = writable(data)
 
 const currentFromStorage = localStorage.getItem(currentListKey)
