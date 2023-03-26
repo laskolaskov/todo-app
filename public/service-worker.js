@@ -4,6 +4,7 @@ const OFFLINE_URL = "https://https://todo-app-git-main-laskolaskov.vercel.app";
 
 const staticAssets = [
     "/",
+    "index.html",
     "todo-app-192.png",
     "todo-app-512.png",
     "vite.svg",
