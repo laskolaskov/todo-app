@@ -3,12 +3,12 @@
     "name": "Todo list app",
     "icons": [
       {
-        "src": "https://todo-app-git-main-laskolaskov.vercel.app/todo-app-512.png",
+        "src": "https://todo-app-git-main-laskolaskov.vercel.app//todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       },
       {
-        "src": "https://todo-app-git-main-laskolaskov.vercel.app/todo-app-192.png",
+        "src": "https://todo-app-git-main-laskolaskov.vercel.app//todo-app-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
