@@ -8,7 +8,8 @@ const staticAssets = [
     "todo-app-192.png",
     "todo-app-512.png",
     "vite.svg",
-    "service-worker.js"
+    "service-worker.js",
+    "manifest.webmanifest"
 ];
 
 async function getAssets() {
