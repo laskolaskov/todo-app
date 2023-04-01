@@ -28,7 +28,7 @@
     }
 </script>
 
-<p class="mt-2 text-slate-400">
+<p class="mt-2 text-sm text-slate-400">
     <span class="mr-5 ml-2 italic"
         >{dateFormat(created.toString(), "dd.mm.yyyy HH:MM")}</span
     >
@@ -42,7 +42,7 @@
     <p
         on:click={() => clickHandler()}
         on:keypress={() => null}
-        class="{'p-1 text-md border-2 rounded-md bg-white hover:bg-gray-100'} {todo.marked
+        class="{'p-1 text-sm border-2 rounded-md bg-white hover:bg-gray-100'} {todo.marked
             ? 'bg-gray-200 text-gray-500 border-gray-500 italic line-through'
             : 'text-black border-blue-500'}"
     >
@@ -53,7 +53,7 @@
         bind:this={input}
         on:change={() => saveContentHandler()}
         on:focusout={() => saveContentHandler()}
-        class="w-full p-1 text-md border border-2 border-red-500 rounded-md bg-white focus:outline-none focus:border-2"
+        class="w-full p-1 text-sm border border-2 border-red-500 rounded-md bg-white focus:outline-none focus:border-2"
         type="text"
         bind:value={todo.text}
     />

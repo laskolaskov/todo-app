@@ -23,7 +23,7 @@
             <Item {todo} />
         {/each}
     {:else}
-        <p class="mt-2 text-xl">No todos to show !</p>
+        <p class="mt-2 text-md">No todos to show !</p>
     {/if}
     <p class="text-slate-400 mt-5 p-2">
         Todo list app by <a

@@ -29,23 +29,23 @@
 </script>
 
 <form on:submit|preventDefault={() => submitHandler()}>
-    <button type="submit" class="text-xl mt-2 p-1 font-bold"
+    <button type="submit" class="text-md mt-2 p-1 font-bold"
         >Add new todo:</button
     >
     <input
         bind:value={val}
         name="new"
-        class="mt-2 block w-full border-2 border-slate-600 rounded-md text-xl h-12 bg-slate-100 p-2"
+        class="mt-2 block w-full border-2 border-slate-600 rounded-md text-md h-8 bg-slate-100 p-2"
         type="text"
     />
     <button
         on:click={() => clearMarked()}
-        class="mt-2 text-md p-1 border-2 border-green-500 rounded-md text-white bold bg-green-400 hover:bg-green-300"
+        class="mt-2 text-sm p-1 border-2 border-green-500 rounded-md text-white bold bg-green-400 hover:bg-green-300"
         >CLEAR MARKED</button
     >
     <button
         on:click={() => (showClearListModal = true)}
-        class="text-md p-1 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
+        class="text-sm p-1 border-2 border-red-500 rounded-md text-white bold bg-red-400 hover:bg-red-300"
         >CLEAR LIST</button
     >
 </form>
