@@ -3,22 +3,22 @@
     "name": "Todo list app",
     "icons": [
       {
-        "src": "https://todo-app-git-main-laskolaskov.vercel.app/todo-app-512.png",
+        "src": "https://todo-app-laskolaskov.vercel.app//todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       },
       {
-        "src": "https://todo-app-git-main-laskolaskov.vercel.app/todo-app-192.png",
+        "src": "https://todo-app-laskolaskov.vercel.app//todo-app-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "https://todo-app-git-main-laskolaskov.vercel.app/todo-app-512.png",
+        "src": "https://todo-app-laskolaskov.vercel.app//todo-app-512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "https://todo-app-git-main-laskolaskov.vercel.app/index.html",
+    "start_url": "https://todo-app-laskolaskov.vercel.app//index.html",
     "background_color": "#e0f2fe",
     "display": "standalone",
     "theme_color": "#e0f2fe",

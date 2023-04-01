@@ -1,6 +1,6 @@
 const OFFLINE_VERSION = 1;
 const CACHE_NAME = "offline";
-const OFFLINE_URL = "https://https://todo-app-git-main-laskolaskov.vercel.app";
+const OFFLINE_URL = "https://todo-app-laskolaskov.vercel.app/";
 
 const staticAssets = [
     "/",
